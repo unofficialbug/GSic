@@ -3,7 +3,7 @@ package com.GSic.common;
 import java.io.*;
 import java.util.*;
 
-public class Room{
+public class Room implements Serializable {
 	private Vector<Person> members;
 	private String createdTime;
 	private Person owner;
@@ -68,6 +68,13 @@ public class Room{
 		if(members.contais(member)){
 			members.remove(member);
 		}
+	}
+	public void deleteRoom(){
+		for(Person p: members){
+			p.currentRoom = null;
+		}
+		members = null;
+		name = null;
 	}
 	public String toString(){
 		return name + "\t\t owner: " + owner.getUserName() +"\t\t"+
